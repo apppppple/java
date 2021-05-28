@@ -178,7 +178,7 @@ JFR，具有以下关键的特性：
 - 开启 JFR 记录的原因也是一个Event，对应的就是 Recording Reason Event
 - 就算是有 Event 丢失，他也是一个 Event，对应 Data Loss Event
 
-这些 Event 在某些特定的时间点产生，每个事件都有名称，产生时间戳还有 Event 数据体组成。Event 数据体不同的 Event 数据不同，例如 CP U负载，Event 发生之前还有之后的 Java 堆大小， 获取锁的线程 ID 等等。还有一点比较有意思的是，大部分的 Event，都有 Event 是在哪个线程发生的，Event 发生的时候这个线程的调用栈，Event 的持续时间。这就非常有用了，利用这些信息，我们可以回溯 Event 发生当时的情况。
+这些 Event 在某些特定的时间点产生，每个事件都有名称，产生时间戳还有 Event 数据体组成。Event 数据体不同的 Event 数据不同，例如 CPU负载，Event 发生之前还有之后的 Java 堆大小， 获取锁的线程 ID 等等。还有一点比较有意思的是，大部分的 Event，都有 Event 是在哪个线程发生的，Event 发生的时候这个线程的调用栈，Event 的持续时间。这就非常有用了，利用这些信息，我们可以回溯 Event 发生当时的情况。
 
 由于 JFR 会采集很多很多的数据，为了效率，最好配置自己感兴趣的事件采集，并且对于 Duration Event 设置时间限制，一般我们对于时间短的事件并不关心。
 
@@ -354,7 +354,7 @@ jvmtiError  SetHeapSamplingInterval(jvmtiEnv* env, jint sampling_interval)
 
 ## GC
 
-从Java9开始，CMS垃圾回收器被废弃，在java11中支持的垃圾回收器有： Serial, Parallel, G1, and Epsilon，默认的是G1回收器。
+从Java9开始，CMS垃圾回收器被废弃，在java11中支持的垃圾回收器有： Serial, Parallel, G1, ZGC  and Epsilon，默认的是G1回收器。
 
 ### ZGC 
 
@@ -588,6 +588,11 @@ Terminating due to java.lang.OutOfMemoryError: Java heap space
 
 
 
-# 其他参考资料
+# 结语
+
+本文的涉及到的demo可以https://github.com/apppppple/java 下载
+
+其他参考资料：
 
 [Reasons to move to Java 11](https://docs.microsoft.com/en-us/azure/developer/java/fundamentals/reasons-to-move-to-java-11)
+
